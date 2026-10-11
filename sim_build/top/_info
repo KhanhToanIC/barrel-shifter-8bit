@@ -1,0 +1,120 @@
+m255
+K4
+z2
+Z0 !s12c _opt2
+Z1 !s99 nomlopt
+R0
+R1
+!s12c _opt1
+R1
+!s12c _opt
+R1
+!s11f vlog 2025.2 2025.05, May 31 2025
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z2 dC:/05_Verfication/sim_build
+T_opt
+!i145 1
+!i144 0
+!s110 1791361330
+VKGz`iDcX?Bn52:>`U6iQD1
+Z3 04 20 4 work tt_um_barrel_shifter fast 0
+=1-4c034f85776c-6ac60130-270-41d0
+R1
+Z4 !s12f OEM100
+Z5 !s12b OEM100
+Z6 !s124 OEM10U1 
+Z7 !s135 nogc
+Z8 o-quiet +acc -auto_acc_if_foreign -work top
+Z9 tCvgOpt 0 defaultOptions 1107585188
+n@_opt
+Z10 OL;O;2025.2;82
+R2
+T_opt1
+!i145 1
+!i144 0
+!s110 1791362046
+VZ2BhQkj^H6DN?TH8maGJH3
+R3
+=1-4c034f85776c-6ac603fd-149-8468
+R1
+R4
+R5
+R6
+R7
+R8
+R9
+n@_opt1
+R10
+R2
+T_opt2
+!i145 1
+!i144 0
+!s110 1791606123
+VM6R?k>B7?XocDm>Q7FKW43
+04 14 4 work barrel_shifter fast 0
+=1-4c034f85776c-6ac9bd6b-1eb-9574
+R1
+R4
+R5
+R6
+R7
+R8
+R9
+n@_opt2
+R10
+R2
+vbarrel_shifter
+Z11 2C:\05_Verfication\project.v
+Z12 DXx6 sv_std 3 std 0 22 @5XbY]_OacJl=`ToSm<M^0
+!s110 1791625528
+!i10b 1
+!s100 G^8m]b^A>gWHgLbhhhYM<3
+I:g1nhCFQ5i4dn[<M=C4j91
+S1
+R2
+w1791606097
+Z13 8C:\05_Verfication\project.v
+Z14 FC:\05_Verfication\project.v
+!i122 10
+L0 3 45
+Z15 VDg1SIo80bB@j0V0VzS_@n1
+Z16 OL;L;2025.2;82
+r1
+!s85 0
+31
+!s108 1791625528.000000
+Z17 !s107 C:\\05_Verfication\\project.v|
+Z18 !s90 -quiet|-work|top|-sv|C:\05_Verfication\project.v|
+!i113 0
+Z19 o-quiet -work top -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z20 tCvgOpt 0 defaultOptions 1085333592
+vtt_um_barrel_shifter
+R11
+R12
+!s110 1791389534
+!i10b 1
+!s100 FHK3;oic^_S=K:3OUmc<_1
+IAfDDY=kFAW8XDfmgjTYSj1
+S1
+R2
+w1791357991
+R13
+R14
+!i122 2
+L0 1 17
+R15
+R16
+r1
+!s85 0
+31
+!s108 1791389534.000000
+R17
+R18
+!i113 0
+R19
+R20

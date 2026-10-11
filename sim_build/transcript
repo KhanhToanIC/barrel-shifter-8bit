@@ -1,0 +1,85 @@
+# Reading pref.tcl
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# ** Note: (vsim-220) 'C:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# vsim -quiet -gui -onfinish stop -pli "C:/Users/ADMIN/AppData/Local/Programs/Python/Python312/Lib/site-packages/cocotb/libs/cocotbvpi_modelsim.dll" top.barrel_shifter 
+# Start time: 16:45:41 on Oct 10,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt2
+#      -.--ns INFO     gpi                                ..\gpi\GpiCommon.cpp:242  in gpi_load_users                  Loaded entry library: 'C:\Users\ADMIN\AppData\Local\Programs\Python\Python312\python312.dll'
+#      -.--ns INFO     gpi                                ..\gpi\GpiCommon.cpp:234  in gpi_load_users                  Running entry func 'initialize' from loaded library 'C:\Users\ADMIN\AppData\Local\Programs\Python\Python312\Lib\site-packages\cocotb\simulator.cp312-win_amd64.pyd'
+#      -.--ns INFO     pygpi                              ..ib\pygpi\embed.cpp:115  in initialize                      Using Python 3.12.10 interpreter at C:\Users\ADMIN\AppData\Local\Programs\Python\Python312\python.exe
+#      -.--ns INFO     gpi                                ..\gpi\GpiCommon.cpp:74   in gpi_print_registered_impl       GPI: VPI support registered
+#      -.--ns INFO     gpi                                ..\gpi\GpiCommon.cpp:74   in gpi_print_registered_impl       GPI: FLI support registered
+add wave  \
+sim:/barrel_shifter/ui_in \
+sim:/barrel_shifter/uo_out \
+sim:/barrel_shifter/uio_in \
+sim:/barrel_shifter/uio_out \
+sim:/barrel_shifter/uio_oe \
+sim:/barrel_shifter/ena \
+sim:/barrel_shifter/clk \
+sim:/barrel_shifter/rst_n \
+sim:/barrel_shifter/shift_amt \
+sim:/barrel_shifter/dir \
+sim:/barrel_shifter/arith \
+sim:/barrel_shifter/stage0_in \
+sim:/barrel_shifter/fill_bit \
+sim:/barrel_shifter/stage1_out \
+sim:/barrel_shifter/stage2_out \
+sim:/barrel_shifter/stage3_out
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ADMIN  Hostname: DESKTOP-P10TF6I  ProcessID: 16848
+#           Attempting to use alternate WLF file "./wlftmw0dws".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftmw0dws
+run -LL
+# Unknown option: LL
+# ** UI-Msg (Error): (vsim-4005) Invalid argument '-LL'.
+# Usage: run [<timesteps> [<time_units>]] | -all | -continue | -next | -step | -over | -out | -init | -final
+run -all
+#      0.00ns INFO     cocotb.initialize                  Seeding Python random module with 1791625569
+# 
+#      0.00ns INFO     cocotb.initialize                  Initialized cocotb v2.1.0 from C:\Users\ADMIN\AppData\Local\Programs\Python\Python312\Lib\site-packages\cocotb
+# 
+#      0.00ns INFO     cocotb.initialize                  Running on ModelSim for Questa Altera Starter FPGA Edition-64 version 2025.1 2025.05
+# 
+#      0.00ns INFO     cocotb.regression                  Running tests
+# 
+#     50.00ns INFO     cocotb.regression                  test.test_charter_mandatory_cases passed
+# 
+#     71.00ns INFO     cocotb.regression                  test.test_custom_edge_cases passed
+# 
+#     71.00ns INFO     cocotb.regression                  *******************************************************************************************
+# 
+#                                                         ** TEST                               STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+# 
+#                                                         *******************************************************************************************
+# 
+#                                                         ** test.test_charter_mandatory_cases   PASS          50.00           0.09        531.91  **
+# 
+#                                                         ** test.test_custom_edge_cases         PASS          20.00           0.08        256.41  **
+# 
+#                                                         *******************************************************************************************
+# 
+#                                                         ** TESTS=2 PASS=2 FAIL=0 SKIP=0                      71.00           0.28        251.77  **
+# 
+#                                                         *******************************************************************************************
+# 
+# ** Note: $finish
+#    Time: 71 ns  Iteration: 0  Instance: /barrel_shifter
+# Simulation stop requested.
+# Causality operation skipped due to absence of debug database file
+# End time: 17:17:48 on Oct 10,2026, Elapsed time: 0:32:07
+# Errors: 0, Warnings: 2

@@ -1,0 +1,1 @@
+C:/altera_lite/25.1std/questa_fse/win64/VisualizerRls/bin/viscom.exe -nolock -quiet -jmem_size 934320 top.barrel_shifter -quiet +acc -auto_acc_if_foreign -work top -allow_unnamed -o _opt2 -id 1-4c034f85776c-6ac9bd6b-1eb-9574 +__betafsm
