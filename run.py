@@ -1,8 +1,9 @@
+import os
 from pathlib import Path
 from cocotb_tools.runner import get_runner
 
 def test_runner():
-    sim = "questa"
+    sim = os.environ.get("SIM", "questa")
     proj_path = Path(__file__).resolve().parent
     runner = get_runner(sim)
     
