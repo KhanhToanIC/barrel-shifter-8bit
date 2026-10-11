@@ -25,5 +25,7 @@ jobs:
           pip install cocotb pytest cocotb-test
 
       - name: Run verification testbench
+        env:
+          SIM: icarus
         run: |
           python run.py
