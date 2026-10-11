@@ -1,0 +1,73 @@
+import cocotb
+from cocotb.triggers import Timer
+
+def pack_uio(shift_amt, dir_val, arith_val):
+    """Hàm đóng gói các tín hiệu điều khiển vào uio_in"""
+    return (shift_amt & 0x07) | ((dir_val & 0x01) << 3) | ((arith_val & 0x01) << 4)
+
+@cocotb.test()
+async def test_charter_mandatory_cases(dut):
+    """4 ca kiểm thử bắt buộc theo Charter §6"""
+    dut._log.info("=== BẮT ĐẦU 4 CA TEST BẮT BUỘC ===")
+
+    # Ca 1: Dịch 0 bit (Giữ nguyên dữ liệu)
+    dut.ui_in.value = 0xA5
+    dut.uio_in.value = pack_uio(shift_amt=0, dir_val=0, arith_val=0)
+    await Timer(10, unit="ns")
+    actual = int(dut.uo_out.value)
+    expected = 0xA5
+    assert actual == expected, f"Loi Ca 1: Ky vong 0x{expected:02X} nhung thuc te uo_out = 0x{actual:02X}"
+
+    # Ca 2: Dịch 7 bit (SHL 7)
+    dut.ui_in.value = 0x01
+    dut.uio_in.value = pack_uio(shift_amt=7, dir_val=1, arith_val=0)
+    await Timer(10, unit="ns")
+    actual = int(dut.uo_out.value)
+    expected = 0x80
+    assert actual == expected, f"LLoi Ca 2: Ky vong 0x{expected:02X} nhung thuc te uo_out = 0x{actual:02X}"
+
+    # Ca 3: Dịch phải số học (SRA) với bit dấu = 1 (0x80 >> 2)
+    dut.ui_in.value = 0x80
+    dut.uio_in.value = pack_uio(shift_amt=2, dir_val=0, arith_val=1)
+    await Timer(10, unit="ns")
+    actual = int(dut.uo_out.value)
+    expected = 0xE0
+    assert actual == expected, f"LLoi Ca 3: Ky vong 0x{expected:02X} nhung thuc te uo_out = 0x{actual:02X}"
+
+    # Ca 4: So sánh SHR và SRA trên cùng dữ liệu 0x80 (dịch 2 bit)
+    dut.ui_in.value = 0x80
+    
+    # 4a. SHR (Logic) -> Kỳ vọng 0x20
+    dut.uio_in.value = pack_uio(shift_amt=2, dir_val=0, arith_val=0)
+    await Timer(10, unit="ns")
+    res_shr = int(dut.uo_out.value)
+
+    # 4b. SRA (Số học) -> Kỳ vọng 0xE0
+    dut.uio_in.value = pack_uio(shift_amt=2, dir_val=0, arith_val=1)
+    await Timer(10, unit="ns")
+    res_sra = int(dut.uo_out.value)
+    actual = (res_shr, res_sra)
+    expected = (0x20, 0xE0)
+    assert actual == expected, f"Lỗi Ca 4: Phân biệt SHR/SRA không đúng"
+
+
+@cocotb.test()
+async def test_custom_edge_cases(dut):
+    """2 ca biên bổ sung tự xây dựng"""
+    dut._log.info("=== BẮT ĐẦU 2 CA TEST BỔ SUNG ===")
+
+    # Ca 5: Dịch trái 4 bit (Kiểm tra riêng Tầng MUX 2)
+    dut.ui_in.value = 0x0F
+    dut.uio_in.value = pack_uio(shift_amt=4, dir_val=1, arith_val=0)
+    await Timer(10, unit="ns")
+    actual = int(dut.uo_out.value)
+    expected = 0xF0
+    assert actual == expected, f"Lỗi Ca 5: Ky vong 0x{expected:02X} nhung thuc te uo_out = 0x{actual:02X}"
+
+    # Ca 6: SRA với bit dấu = 0 (Số dương, 0x7F >> 3)
+    dut.ui_in.value = 0x7F
+    dut.uio_in.value = pack_uio(shift_amt=3, dir_val=0, arith_val=1)
+    await Timer(10, unit="ns")
+    actual = int(dut.uo_out.value)
+    expected = 0x0F
+    assert actual == expected, f"Lỗi Ca 6: Ky vong 0x{expected:02X} nhung thuc te uo_out = 0x{actual:02X}"
