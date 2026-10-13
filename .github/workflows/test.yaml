@@ -29,7 +29,11 @@ jobs:
           SIM: icarus
         run: |
           python run.py
-          
+
+      - name: List sim_build directory
+        run: |
+          ls -la sim_build/
+
       - name: Upload Waveform Artifact
         uses: actions/upload-artifact@v4
         with:
