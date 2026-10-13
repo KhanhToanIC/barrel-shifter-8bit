@@ -9,14 +9,15 @@ def test_runner():
     
     runner.build(
         verilog_sources=[proj_path / "project.v"],
-        hdl_toplevel="barrel_shifter",  # 📝 Đã đổi tên toplevel thành barrel_shifter
+        hdl_toplevel="barrel_shifter",
         always=True,
+        waves=True,  # 🌊 Bật tạo file dạng sóng khi build
     )
     
     runner.test(
-        hdl_toplevel="barrel_shifter",  # 📝 Đã đổi tên toplevel thành barrel_shifter
+        hdl_toplevel="barrel_shifter",
         test_module="test",
-        gui=True,  # 🌊 Bật giao diện GUI QuestaSim
+        waves=True,  # 🌊 Bật lưu dạng sóng khi chạy kiểm thử
     )
 
 if __name__ == "__main__":
